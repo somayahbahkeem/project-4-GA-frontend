@@ -9,7 +9,14 @@ import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 import AlertDismissible from './auth/components/AlertDismissible'
-
+import StudentIndex from './student/StudentIndex'
+import StudentShow from './student/StudentShow'
+import StudentCreate from './student/StudentCreate'
+import StudentEdit from './student/StudentEdit'
+import Home from './Home';
+import Footer from './Footer';
+import AttendeesIndex from './Attendees/AttendeesIndex'
+import AttendeesCreate from './Attendees/AttendeesCreate'
 class App extends Component {
   constructor () {
     super()
@@ -50,6 +57,33 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword alert={this.alert} user={user} />
           )} />
+          <AuthenticatedRoute  user={user} exact path='/students' render={() => (
+            <StudentIndex user={user} alert={this.alert}/>
+          )}/>
+          <AuthenticatedRoute  user={user}  exact path='/students/:id' render={(props) => (
+            <StudentShow user={user} studentId={props.match.params.id}/>
+          )}/>
+
+          <AuthenticatedRoute  user={user} exact path='/create' render={() => (
+            <StudentCreate user={user} />
+          )}/>
+         
+         <AuthenticatedRoute  user={user} exact path='/students/:id/edit' render={(props) => (
+            <StudentEdit user={user} />
+          )}/>
+          <AuthenticatedRoute  user={user} exact path='/students/:id/attendees' render={(props) => (
+            <AttendeesIndex user={user}  studentId={props.match.params.id}/>
+          )}/>
+         <AuthenticatedRoute  user={user} path='/students/:id/attendees/create' render={() => (
+            <AttendeesCreate user={user} />
+          )}/>
+
+          <Route  user={user} exact path='/' render={() => (
+              <Home />
+          )}/>
+        
+          {/* FOOTER SECTION */}
+          <Footer/>
         </main>
       </React.Fragment>
     )
