@@ -1,22 +1,22 @@
-// Student api
+// cources api
 import apiUrl from '../apiConfig';
 import Axios from 'axios'
 
 
-export const index = (user,courcesId) => {
+export const index = (user) => {
     return  Axios({
         method:'GET',
-        url: apiUrl + `/cources/${courcesId}/students`,
+        url: apiUrl + '/cources',
         headers:{
             "Authorization":`Bearer ${user.token}`
         }
     })
 }
 
-export const show = (user, studentId) => {
+export const show = (user, courcesId) => {
     return Axios({
         method:'GET',
-        url: apiUrl + `/students/${studentId}`,
+        url: apiUrl + `/cources/${courcesId}`,
         headers:{
             "Authorization":`Bearer ${user.token}`
         }
@@ -24,24 +24,24 @@ export const show = (user, studentId) => {
 }
 
 
-export const create = (user,newStudent,courcesId) => {
+export const create = (user,newCources) => {
     return Axios({
         method:'POST',
-        url:apiUrl + `/cources/${courcesId}/students/`,
+        url:apiUrl + '/cources',
         headers:{
             "Authorization":`Bearer ${user.token}`
         },
         data:{
-            student:newStudent
+            cources:newCources
         }
     })
 }
 
 
-export const destroy = (user,studentId) => {
+export const destroy = (user,courcesId) => {
     return Axios({
         method:"DELETE",
-        url:apiUrl + `/students/${studentId}`,
+        url:apiUrl + `/cources/${courcesId}`,
         headers:{
             "Authorization":`Bearer ${user.token}`
         }
@@ -49,15 +49,15 @@ export const destroy = (user,studentId) => {
 }
 
 
-export const update = (user,studentId,updateStudent) => {
+export const update = (user,updateCources,courcesId) => {
     return Axios({
         method:'PUT',
-        url:apiUrl + `/students/${studentId}`,
+        url:apiUrl + `/cources/${courcesId}`,
         headers:{
             "Authorization":`Bearer ${user.token}`
         },
         data:{
-            student:updateStudent
+            cources:updateCources
         }
     })
 }

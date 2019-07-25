@@ -1,3 +1,4 @@
+// Attendees api
 import apiUrl from '../apiConfig';
 import Axios from 'axios'
 
@@ -48,15 +49,15 @@ export const destroy = (user,attendeesId) => {
 }
 
 
-export const update = (user,updateAttendees,attendeesId) => {
+export const update = (user,attendeesId,updateAttendees) => {
     return Axios({
         method:'PUT',
-        url:apiUrl + `/attendees/${attendeesId}`,
+        url:apiUrl +`/attendees/${attendeesId}`,
         headers:{
             "Authorization":`Bearer ${user.token}`
         },
         data:{
-            attendeest:updateAttendees
+            attendees:updateAttendees
         }
     })
 }

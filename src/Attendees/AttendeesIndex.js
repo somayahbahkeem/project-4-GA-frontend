@@ -9,6 +9,9 @@ class AttendeesIndex extends Component{
         attendees:[],
         student:{}
     }
+    printFunction =()=> {
+        window.print();
+      }
 
     componentDidMount(){
         const user = this.props.user
@@ -39,8 +42,10 @@ class AttendeesIndex extends Component{
 
     destroy = (attendeesId) => {
         const user = this.props.user
+        console.log(user,attendeesId)
+
         destroy(user,attendeesId)
-        .then(() => this.props.alert('Deleted successful','success'))
+        
         .then(() => {
            const newAttendees = this.state.attendees.filter((attendees) => attendees._id != attendeesId)
             this.setState({
@@ -54,7 +59,7 @@ class AttendeesIndex extends Component{
         // console.log(this.props)
         return(
             <div>
-                 <Link to={`/students/${this.props.match.params.id}/attendees/create`}>Create</Link>
+                 <Link to={`/students/${this.props.match.params.id}/attendees/create`}><img src='https://files.slack.com/files-pri/TA2AHQDQ8-FLHR9AC9F/user_4.jpg'  height="80px" width="100px"/></Link>
                 <table>
                     <thead>
                     <tr>
@@ -62,8 +67,8 @@ class AttendeesIndex extends Component{
                         <th>Date</th> 
                         <th>Time</th>
                         <th>Record</th>
-                        <th></th>
-                        <th></th>
+                        <th>Delete</th>
+                        <th>Edit</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -74,11 +79,13 @@ class AttendeesIndex extends Component{
                             <td>{new Date(attendees.createdAt).getHours()}:{new Date(attendees.createdAt).getMinutes()}</td>
                             <td>{attendees.record}</td>
                             <td><button onClick={() => this.destroy(attendees._id)}>Delete</button></td>
-                            <td><Link to={`/attendees/${attendees._id}/edit`} /><button>Edit</button></td>
+                            <td><Link to={`/attendees/${attendees._id}/edit`} ><button>Edit</button></Link></td>
                         </tr>
                     ))}
                     </tbody>
                 </table>
+                <Link to={`/students`}><button>Back</button></Link>
+                <button onClick ={this.printFunction}>Print</button>
             </div>
         )
     }

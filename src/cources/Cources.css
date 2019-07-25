@@ -1,0 +1,21 @@
+.cources * {
+    box-sizing: border-box;
+    border-radius: 25px;
+  }
+  
+ 
+.cources .column {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+  }
+  
+  /* Clearfix (clear floats) */
+.cources.row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+.cources h4{
+      text-align: center;
+  }

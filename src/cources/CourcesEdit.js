@@ -2,21 +2,22 @@ import React, {Component} from 'react';
 import {show,update} from './api';
 import {withRouter} from 'react-router-dom';
 
-class AttendeesEdit extends Component{
+class CourcesEdit extends Component{
     state={
         dataForm:{
-            record:" "
+            courceName:" ",
+            imge:" "
         }
     }
 
     componentDidMount(){
         const user = this.props.user;
-        const attendeesId = this.props.id;
-        show(user,attendeesId)
+        const courcesId = this.props.match.params.id;
+        show(user,courcesId)
         .then((response) => {
-            const attendees = response.data.attendees
+            const cources = response.data.cources
             this.setState({
-                dataForm:attendees
+                dataForm:cources
             })
         })
         .catch(error => console.log(error))
@@ -33,28 +34,29 @@ class AttendeesEdit extends Component{
             dataForm:newForm
         })
     }
-    
+
 
     handleSubmit = (event) =>{
         event.preventDefault();
-        // console.log(this.props)
+        console.log(this.props)
         const user = this.props.user;
-        const attendeesId = this.props.id;
-        const updateAttendees = this.state.dataForm;
-        update(user,attendeesId,updateAttendees)
-        // `/students/${studentId}/attendees`
-        .then(() => this.props.history.push(`/attendees/${attendeesId}`))
+        const courcesId = this.props.match.params.id;
+        const updateCources = this.state.dataForm;
+        update(user,updateCources,courcesId)
+        .then(() => this.props.history.push(`/cources/${courcesId}`))
         .catch((error) => console.log(error))
     }
 
 
     render(){
-
+        // console.log(this.props)
         return(
             <form onSubmit={this.handleSubmit}>
-                <label>Record</label>
-                <input  onChange={this.handleChange} type="text" name="record" value={this.state.dataForm.record}/>
-                <button type="submit">Edit</button>
+                <label>Cources Name</label>
+                <input onChange={this.handleChange} type="text" name="courceName" value={this.state.dataForm.courceName}/>
+                <label>Imge</label>
+                <input  onChange={this.handleChange} type="text" name="imge" value={this.state.dataForm.imge}/>
+                <button type="submit">Create</button>
             </form>
         )
     }
@@ -62,4 +64,4 @@ class AttendeesEdit extends Component{
 
 
 
-export default withRouter(AttendeesEdit)
+export default withRouter(CourcesEdit)

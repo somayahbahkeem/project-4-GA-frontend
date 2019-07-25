@@ -1,0 +1,21 @@
+.Company * {
+    box-sizing: border-box;
+    border-radius: 25px;
+  }
+  
+ 
+.Company .column {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+  }
+  
+  /* Clearfix (clear floats) */
+.Company.row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+.Company h4{
+      text-align: center;
+  }

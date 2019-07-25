@@ -2,15 +2,13 @@ import React,{Component} from 'react'
 import {create} from './api'
 import {withRouter} from 'react-router-dom'
 
-class StudentCreate extends Component{
+class CourcesCreate extends Component{
     state = {
         dataForm:{
-            firstName:" ",
-            lastName:" ",
-            email:" "
+            courceName:" ",
+            imge:" "
         }
     }
-
     handleChange = (event) => {
         //get the name of input
         const name = event.target.name;
@@ -23,33 +21,28 @@ class StudentCreate extends Component{
         })
     }
 
-
     handleSubmit = (event) => {
         event.preventDefault();
         const newStudent = this.state.dataForm
         const user = this.props.user
-        const courcesId = this.props.courcesId
-        create(user,newStudent,courcesId)
+        create(user,newStudent)
         // .then(() => alert('created'))
-        .then(() => this.props.history.push(`/cources/${courcesId}/students`))
+        .then(() => this.props.history.push('/cources'))
         .catch((error) => console.log(error))
     }
 
     render(){
         return(
             <form onSubmit={this.handleSubmit}>
-                <label>First Name</label>
-                <input onChange={this.handleChange} type="text" name="firstName" value={this.state.dataForm.firstName}/>
-                <label>Last Name</label>
-                <input  onChange={this.handleChange} type="text" name="lastName" value={this.state.dataForm.lastName}/>
-                <label>Email</label>
-                <input onChange={this.handleChange} type="text" name="email" value={this.state.dataForm.email}/>
+                <label>Cources Name</label>
+                <input onChange={this.handleChange} type="text" name="courceName" value={this.state.dataForm.courceName}/>
+                <label>Imge</label>
+                <input  onChange={this.handleChange} type="text" name="imge" value={this.state.dataForm.imge}/>
                 <button type="submit">Create</button>
             </form>
         )
-    }
+    } 
 }
 
 
-
-export default withRouter(StudentCreate)
+export default withRouter(CourcesCreate)

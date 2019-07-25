@@ -8,6 +8,7 @@ class AttendeesCreate extends Component{
             record:" "
         }
     }
+
     handleChange = (event) => {
         //get the name of input
         const name = event.target.name;
@@ -20,14 +21,7 @@ class AttendeesCreate extends Component{
         })
     }
 
-    // handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     const newAttendees = this.state.dataForm
-    //     const user = this.props.user
-    //     create(user,newAttendees)
-    //     // .then(() => alert('created'))
-    //     .then(() => this.props.history.push('/attendees'))
-    //     .catch((error) => console.log(error))
+    
         handleSubmit = (event) => {
             event.preventDefault();
             const newAttendees = this.state.dataForm

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-
+import {Link} from 'react-router-dom'
 import { signIn } from '../api'
 import messages from '../messages'
 
@@ -26,7 +26,7 @@ class SignIn extends Component {
     signIn(this.state)
       .then(res => setUser(res.data.user))
       .then(() => alert(messages.signInSuccess, 'success'))
-      .then(() => history.push('/'))
+      .then(() => history.push('/cources'))
       .catch(error => {
         console.error(error)
         this.setState({ email: '', password: '' })
@@ -35,7 +35,7 @@ class SignIn extends Component {
   }
 
   render () {
-    const { email, password } = this.state
+    const { email,password } = this.state
 
     return (
       <form className='auth-form' onSubmit={this.onSignIn}>
@@ -58,6 +58,7 @@ class SignIn extends Component {
           placeholder="Password"
           onChange={this.handleChange}
         />
+        {/* <Link to="/students">Students</Link> */}
         <button type="submit">Sign In</button>
       </form>
     )
