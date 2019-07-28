@@ -23,9 +23,9 @@ class CourcesCreate extends Component{
 
     handleSubmit = (event) => {
         event.preventDefault();
-        const newStudent = this.state.dataForm
+        const newCours = this.state.dataForm
         const user = this.props.user
-        create(user,newStudent)
+        create(user,newCours)
         // .then(() => alert('created'))
         .then(() => this.props.history.push('/cources'))
         .catch((error) => console.log(error))

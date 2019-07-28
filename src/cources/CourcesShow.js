@@ -3,17 +3,17 @@ import {show} from './api'
 
 class CourcesShow extends Component{
     state = {
-        cources:{}
+        cours:{}
     }
 
     componentDidMount(){
         const user = this.props.user;
-        const courcesId = this.props.courcesId;
-        show(user,courcesId)
+        const coursId = this.props.coursId;
+        show(user,coursId)
         .then((response) => {
-            const showCources = response.data.cources;
+            const showCours = response.data.cours;
             this.setState({
-                cources:showCources
+                cours:showCours
             })
         })
         .catch((error) => console.log(error))
@@ -25,8 +25,8 @@ class CourcesShow extends Component{
         // console.log(this.props.courcesId)
         return(
             <div>
-                <h1>{this.state.cources.firstName}</h1>
-                <h1>{this.state.cources.lastName}</h1>
+                <h1>{this.state.cours.courceName}</h1>
+                <h1>{this.state.cours.imge}</h1>
             </div>
         )
     }

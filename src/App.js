@@ -18,6 +18,7 @@ import Company from './Company'
 import About from './About';
 import Contact from './Contact';
 import Footer from './Footer';
+import OptionPage from './OptionPage'
 import AttendeesIndex from './Attendees/AttendeesIndex'
 import AttendeesCreate from './Attendees/AttendeesCreate'
 import AttendeesEdit from './Attendees/AttendeesEdit'
@@ -80,8 +81,8 @@ class App extends Component {
             <StudentCreate user={user} courcesId={props.match.params.cources_id}/>
           )}/>
          
-         <AuthenticatedRoute  user={user} exact path='/students/:id/edit' render={() => (
-            <StudentEdit user={user} />
+         <AuthenticatedRoute  user={user} exact path='/cources/:cources_id/students/:id/edit' render={(props) => (
+            <StudentEdit user={user} studentId={props.match.params.id} courcesId={props.match.params.cources_id}/>
           )}/>
 {/* #Cources Route-------- */}
          <AuthenticatedRoute  user={user} exact path='/cources' render={() => (
@@ -89,20 +90,20 @@ class App extends Component {
           )}/>
 
           <AuthenticatedRoute  user={user}  exact path='/cources/:id' render={(props) => (
-            <CourcesShow user={user} studentId={props.match.params.id}/>
+            <CourcesShow user={user} coursId={props.match.params.id}/>
           )}/>
 
           <AuthenticatedRoute  user={user} exact path='/cources/create' render={() => (
             <CourcesCreate user={user} />
           )}/>
          
-         <AuthenticatedRoute  user={user} exact path='/cources/:id/edit' render={() => (
-            <CourcesEdit user={user} />
+         <AuthenticatedRoute  user={user} exact path='/cources/:id/edit' render={(props) => (
+            <CourcesEdit user={user} coursId={props.match.params.id}/>
           )}/>
 
 {/* #Attendees Route-------- */}
-          <AuthenticatedRoute  user={user} exact path='/students/:id/attendees' render={(props) => (
-            <AttendeesIndex user={user}  studentId={props.match.params.id} />
+          <AuthenticatedRoute  user={user} exact path='/cources/:cources_id/students/:id/attendees' render={(props) => (
+            <AttendeesIndex user={user}  studentId={props.match.params.id} courcesId={props.match.params.cources_id}/>
           )}/>
          <AuthenticatedRoute  user={user} path='/students/:id/attendees/create' render={() => (
             <AttendeesCreate user={user} />
@@ -116,7 +117,7 @@ class App extends Component {
           )}/>
 {/* #Home Route-------- */}
           <Route   user={user} exact path='/' render={() => (
-              <Home user={user}/>
+          <Home user={user}/>
           )}/>
 {/* #Company Route-------- */}
           <AuthenticatedRoute  user={user} exact path='/company' render={() => (
@@ -129,6 +130,10 @@ class App extends Component {
 {/* #Contact Route-------- */}
            <Route  user={user} exact path='/contact' render={() => (
               <Contact/>
+          )}/>
+{/* #OptionPage Route-------- */}
+          <Route   user={user} exact path='/optionPage' render={() => (
+          <OptionPage user={user}/>
           )}/>
         
           {/* FOOTER SECTION */}

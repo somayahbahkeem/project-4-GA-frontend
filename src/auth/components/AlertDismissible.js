@@ -8,7 +8,16 @@ class AlertDismissible extends React.Component {
         show: true,
       };
     }
-  
+    componentDidMount(){
+      this.timer = setInterval(() =>{
+        this.setState({
+          show: false
+        })
+      }, 1000)
+    }
+    componentWillUnmount(){
+      clearInterval(this.timer)
+    }
     render() {
       const handleDismiss = () => this.setState({ show: false });
       if (this.state.show) {

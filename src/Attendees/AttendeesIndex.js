@@ -13,10 +13,12 @@ class AttendeesIndex extends Component{
         window.print();
       }
 
+
     componentDidMount(){
         const user = this.props.user
         const studentId = this.props.studentId
-        // console.log(user,studentId)
+        // const courcesId = this.props.courcesId
+        // console.log(user,studentId,courcesId)
         //api for attendees
         index(user,studentId)
         .then(response => {
@@ -84,7 +86,7 @@ class AttendeesIndex extends Component{
                     ))}
                     </tbody>
                 </table>
-                <Link to={`/students`}><button>Back</button></Link>
+                    <Link to={`/cources/${this.props.courcesId}/students`}><button>Back</button></Link> 
                 <button onClick ={this.printFunction}>Print</button>
             </div>
         )

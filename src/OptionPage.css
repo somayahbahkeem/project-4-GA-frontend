@@ -1,0 +1,33 @@
+
+.OptionPage{
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.OptionPage .box{
+    
+    /* border-radius: 50%;
+    padding: 15px 25px;
+    text-decoration: none;
+    display: inline-block;
+    border-style: solid;
+    border: 1px solid #ddd; */
+    
+    /* border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+    text-align: center; */
+}

@@ -15,9 +15,11 @@ class CourcesEdit extends Component{
         const courcesId = this.props.match.params.id;
         show(user,courcesId)
         .then((response) => {
-            const cources = response.data.cources
+            console.log("res", response)
+            const cours = response.data.cours
+            console.log(cours)
             this.setState({
-                dataForm:cources
+                dataForm:cours
             })
         })
         .catch(error => console.log(error))
@@ -40,10 +42,10 @@ class CourcesEdit extends Component{
         event.preventDefault();
         console.log(this.props)
         const user = this.props.user;
-        const courcesId = this.props.match.params.id;
+        const courcesId = this.props.coursId;
         const updateCources = this.state.dataForm;
         update(user,updateCources,courcesId)
-        .then(() => this.props.history.push(`/cources/${courcesId}`))
+        .then(() => this.props.history.push(`/cources`))
         .catch((error) => console.log(error))
     }
 

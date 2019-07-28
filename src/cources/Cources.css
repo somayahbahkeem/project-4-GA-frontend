@@ -16,6 +16,7 @@
     clear: both;
     display: table;
   }
-.cources h4{
-      text-align: center;
-  }
+
+.cources .buttonSection , h4{
+  text-align: center;
+}

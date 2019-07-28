@@ -63,8 +63,8 @@ class StudentIndex extends Component{
                             <td>{student.lastName}</td>
                             <td>{student.email}</td>
                             <td><button onClick={() => this.destroy(student._id)}>Delete</button></td>
-                            <td><Link to={`/students/${student._id}/edit`}><button>Edit</button></Link></td>
-                            <td><Link to={`/students/${student._id}/attendees`}><img src='https://files.slack.com/files-pri/TA2AHQDQ8-FLHR9AC9F/user_4.jpg'  height="50px" width="50px"/></Link></td>
+                            <td><Link to={`/cources/${this.props.courcesId}/students/${student._id}/edit`}><button>Edit</button></Link></td>
+                            <td><Link to={`/cources/${this.props.courcesId}/students/${student._id}/attendees`}><img src='https://files.slack.com/files-pri/TA2AHQDQ8-FLHR9AC9F/user_4.jpg'  height="50px" width="50px"/></Link></td>
                         </tr>
                     ))}
                     </tbody>

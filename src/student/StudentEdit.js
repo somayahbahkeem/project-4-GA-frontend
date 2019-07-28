@@ -39,18 +39,18 @@ class StudentEdit extends Component{
 
     handleSubmit = (event) =>{
         event.preventDefault();
-        console.log(this.props)
+        // console.log(this.props)
         const user = this.props.user;
         const studentId = this.props.match.params.id;
         const updateStudent = this.state.dataForm;
         update(user,updateStudent,studentId)
-        .then(() => this.props.history.push(`/students/${studentId}`))
+        .then(() => this.props.history.push(`/cources/${this.props.courcesId}/students/`))
         .catch((error) => console.log(error))
     }
 
 
     render(){
-        // console.log(this.props)
+   
         return(
              <form onSubmit={this.handleSubmit}>
 

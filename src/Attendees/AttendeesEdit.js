@@ -41,9 +41,10 @@ class AttendeesEdit extends Component{
         const user = this.props.user;
         const attendeesId = this.props.id;
         const updateAttendees = this.state.dataForm;
-        update(user,attendeesId,updateAttendees)
-        // `/students/${studentId}/attendees`
-        .then(() => this.props.history.push(`/attendees/${attendeesId}`))
+        update(user,updateAttendees,attendeesId)
+        .then((res) => {
+            this.props.history.push(`/students/${res.data.studentId}/attendees`)
+        })
         .catch((error) => console.log(error))
     }
 

@@ -36,22 +36,27 @@ class CourcesIndex extends Component{
         console.log(this.props.user)
         return(
             <div>
-                <h2>Cources Page</h2>
-                <br/>
+
+                
                  <Link to='/cources/create'><img src='https://files.slack.com/files-pri/TA2AHQDQ8-FLS1MN0A3/user_2.jpg'  height="80px" width="100px"/></Link>
                 <br/>
                 <br/>
+                <div className="row cources">
                 {this.state.cources.map((cource,index) => (
-                    <div key={index} className="row cources">
-                        <div className="column">     
+                 
+                        <div key={index} className="column">     
                             <Link to={`/cources/${cource._id}/students`}><img src={cource.imge} width="100%"/></Link>
                             <h4>{cource.courceName}</h4>
+
+                            <section className="buttonSection" >
                             <button onClick={() => this.destroy(cource._id)}>Delete</button>
                             <Link to={`/cources/${cource._id}/edit`}><button>Edit</button></Link>
+                            </section>
+
                         </div>
-                    </div>
                 ))}
-                <Link to={`/`}><button>Back</button></Link>
+                </div>
+                <Link to={'/OptionPage'}><button>Back</button></Link>
 
             </div>
         )

@@ -27,7 +27,7 @@ export const show = (user, studentId) => {
 export const create = (user,newStudent,courcesId) => {
     return Axios({
         method:'POST',
-        url:apiUrl + `/cources/${courcesId}/students/`,
+        url:apiUrl + `/cources/${courcesId}/students/create`,
         headers:{
             "Authorization":`Bearer ${user.token}`
         },
@@ -49,7 +49,7 @@ export const destroy = (user,studentId) => {
 }
 
 
-export const update = (user,studentId,updateStudent) => {
+export const update = (user,updateStudent,studentId) => {
     return Axios({
         method:'PUT',
         url:apiUrl + `/students/${studentId}`,

@@ -49,7 +49,7 @@ export const destroy = (user,attendeesId) => {
 }
 
 
-export const update = (user,attendeesId,updateAttendees) => {
+export const update = (user,updateAttendees,attendeesId) => {
     return Axios({
         method:'PUT',
         url:apiUrl +`/attendees/${attendeesId}`,
