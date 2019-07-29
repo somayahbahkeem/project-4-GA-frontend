@@ -2,33 +2,38 @@ import React from 'react';
 import {Link} from 'react-router-dom'
 import "./OptionPage.css";
 
-const OptionPage= () => {
+const OptionPage= (props) => {
     return(
-     
-     <div className="OptionPage">
-
-     <div className="row">
+    <div className="OptionPage">
+     <div className="OptionPage1">
 
         <div className="column">
-        <Link to="/cources">All</Link>
+        <Link to={`/cources/${props.courceId}/students`}>TAKE ATTENDESS</Link>
         </div>
 
         <div className="column">
-        <Link to="/cources">Absent</Link>
+        <Link to="/AttendeesRecurd">ATTENDEES RECORD</Link>
         </div>
 
         <div className="column">
-        <Link to="/cources">late</Link>
+        <Link to="/SearchStudent">SEARCH FOR STUDENT</Link>
         </div>
 
         <div className="column">
-        <Link to="/cources">Attendess</Link>
+        <Link to={`/cources/${props.courceId}/studentInformation`}>STUDENTS INFORMATION</Link>
+        </div>
+        
         </div>
 
+        <section className="S">
+        <Link to={`/cources`}>Back</Link>
+        </section>
+        
         </div>
 
-     </div>
-     
+
+
+
     )
 }
 

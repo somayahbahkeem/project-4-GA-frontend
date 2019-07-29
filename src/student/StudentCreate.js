@@ -7,7 +7,8 @@ class StudentCreate extends Component{
         dataForm:{
             firstName:" ",
             lastName:" ",
-            email:" "
+            email:" ",
+            phone:" "
         }
     }
 
@@ -31,8 +32,8 @@ class StudentCreate extends Component{
         const courcesId = this.props.courcesId
         create(user,newStudent,courcesId)
         // .then(() => alert('created'))
-        .then(() => this.props.history.push(`/cources/${courcesId}/students`))
-        .catch((error) => console.log(error))
+        .then(() => this.props.history.push(`/cources/${courcesId}/studentInformation`))
+        .catch((error) => this.props.alert(error.message, 'danger'))
     }
 
     render(){
@@ -44,6 +45,8 @@ class StudentCreate extends Component{
                 <input  onChange={this.handleChange} type="text" name="lastName" value={this.state.dataForm.lastName}/>
                 <label>Email</label>
                 <input onChange={this.handleChange} type="text" name="email" value={this.state.dataForm.email}/>
+                <label>Phone Number</label>
+                <input onChange={this.handleChange} type="text" name="phone" value={this.state.dataForm.phone}/>
                 <button type="submit">Create</button>
             </form>
         )

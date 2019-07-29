@@ -26,11 +26,11 @@ class AttendeesCreate extends Component{
             event.preventDefault();
             const newAttendees = this.state.dataForm
             const user = this.props.user
-            const studentId = this.props.match.params.id
+            const studentId = this.props.studentId
             // console.log(user,newAttendees,studentId)
             create(user,newAttendees,studentId)
             // .then(() => alert('created'))
-             .then(() => this.props.history.push(`/students/${studentId}/attendees`))
+             .then(() => this.props.history.push(`/cources/${this.props.courceId}/students/${studentId}/attendees`))
             .catch((error) => console.log(error))
     }
 

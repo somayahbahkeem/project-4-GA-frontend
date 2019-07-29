@@ -10,7 +10,13 @@ class StudentIndex extends Component{
     printFunction =()=> {
         window.print();
       }
+      onChange = (event) =>{
+        const value = event.currentTarget.value
+        const studentId = event.currentTarget.name.split("-")[1]
+        // const date = new Date().toString()
 
+        console.log({value, studentId})
+      }
     componentDidMount(){
         const user = this.props.user
         const courcesId = this.props.courcesId
@@ -24,34 +30,20 @@ class StudentIndex extends Component{
         .catch((error) => console.log(error))
     }
 
-    destroy = (studentId) => {
-        const user = this.props.user
-        destroy(user,studentId)
-        .then(() => this.props.alert('Deleted successful','success'))
-        .then(() => {
-           const newStudents = this.state.students.filter((student) => student._id != studentId)
-            this.setState({
-                students:newStudents
-            })
-        })
-        .catch((error) => console.log(error))
-    }
     render(){
         console.log(this.props.user)
         return(
-            <div>
-                <br/>
-                 <Link to={`/cources/${this.props.courcesId}/students/create`}><img src='https://files.slack.com/files-pri/TA2AHQDQ8-FLS1MN0A3/user_2.jpg'  height="80px" width="100px"/></Link>
-                <br/>
+            <div className="Student">
                 <br/>
                 <table >
                 <thead>
                     <tr>
-                        <th>Firstname</th>
-                        <th>Lastname</th> 
-                        <th>Email</th>
-                        <th>Delete</th>
-                        <th>Edit</th>
+                        <th>Student Name</th>
+                        <th>Present</th>
+                        <th>Absent</th>
+                        <th>Absent Excuse</th>
+                        <th>Late</th>
+                        <th>Late Excuse</th>
                         <th>Attendees</th>
                     
                     </tr>
@@ -59,17 +51,19 @@ class StudentIndex extends Component{
                     <tbody>
                     {this.state.students.map((student,index) => (
                         <tr key={index}>
-                            <td>{student.firstName}</td>
-                            <td>{student.lastName}</td>
-                            <td>{student.email}</td>
-                            <td><button onClick={() => this.destroy(student._id)}>Delete</button></td>
-                            <td><Link to={`/cources/${this.props.courcesId}/students/${student._id}/edit`}><button>Edit</button></Link></td>
+                        
+                            <td>{student.firstName} {student.lastName}</td>
+                            <td><input type="radio" onChange={this.onChange} name={`record-${student._id}`} value="Present"/> </td>
+                            <td><input type="radio" onChange={this.onChange} name={`record-${student._id}`} value="Absent"/> </td>
+                            <td><input type="radio" onChange={this.onChange} name={`record-${student._id}`} value="Absent Excuse"/> </td>
+                            <td><input type="radio" onChange={this.onChange} name={`record-${student._id}`} value="Late"/> </td>
+                            <td><input type="radio" onChange={this.onChange} name={`record-${student._id}`} value="Late Excuse"/> </td>
                             <td><Link to={`/cources/${this.props.courcesId}/students/${student._id}/attendees`}><img src='https://files.slack.com/files-pri/TA2AHQDQ8-FLHR9AC9F/user_4.jpg'  height="50px" width="50px"/></Link></td>
                         </tr>
                     ))}
                     </tbody>
                 </table>
-                <Link to={`/cources`}><button>Back</button></Link>
+                <Link to={`/optionPage/${this.props.courcesId}`}><button>Back</button></Link>
                 <button onClick ={this.printFunction}>Print</button>
             </div>
         )
@@ -79,3 +73,31 @@ class StudentIndex extends Component{
 
 
 export default StudentIndex
+
+
+
+{/* <table >
+<thead>
+    <tr>
+        <th>Firstname</th>
+        <th>Lastname</th> 
+        <th>Email</th>
+        <th>Delete</th>
+        <th>Edit</th>
+        <th>Attendees</th>
+    
+    </tr>
+    </thead>
+    <tbody>
+    {this.state.students.map((student,index) => (
+        <tr key={index}>
+            <td>{student.firstName}</td>
+            <td>{student.lastName}</td>
+            <td>{student.email}</td>
+            <td><button onClick={() => this.destroy(student._id)}>Delete</button></td>
+            <td><Link to={`/cources/${this.props.courcesId}/students/${student._id}/edit`}><button>Edit</button></Link></td>
+            <td><Link to={`/cources/${this.props.courcesId}/students/${student._id}/attendees`}><img src='https://files.slack.com/files-pri/TA2AHQDQ8-FLHR9AC9F/user_4.jpg'  height="50px" width="50px"/></Link></td>
+        </tr>
+    ))}
+    </tbody>
+</table> */}

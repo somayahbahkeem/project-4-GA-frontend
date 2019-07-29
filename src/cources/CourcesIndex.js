@@ -44,8 +44,9 @@ class CourcesIndex extends Component{
                 <div className="row cources">
                 {this.state.cources.map((cource,index) => (
                  
-                        <div key={index} className="column">     
-                            <Link to={`/cources/${cource._id}/students`}><img src={cource.imge} width="100%"/></Link>
+                        <div key={index} className="column">    
+                            <Link to={`/OptionPage/${cource._id}`}><img src={cource.imge} width="100%"/></Link>
+                            {/* <Link to={`/OptionPage`}><img src={cource.imge} width="100%"/></Link> */}
                             <h4>{cource.courceName}</h4>
 
                             <section className="buttonSection" >
@@ -56,7 +57,7 @@ class CourcesIndex extends Component{
                         </div>
                 ))}
                 </div>
-                <Link to={'/OptionPage'}><button>Back</button></Link>
+                {/* <Link to={'/'}><button>Back</button></Link> */}
 
             </div>
         )

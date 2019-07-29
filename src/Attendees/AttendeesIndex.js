@@ -17,9 +17,6 @@ class AttendeesIndex extends Component{
     componentDidMount(){
         const user = this.props.user
         const studentId = this.props.studentId
-        // const courcesId = this.props.courcesId
-        // console.log(user,studentId,courcesId)
-        //api for attendees
         index(user,studentId)
         .then(response => {
            const allAttendees = response.data.attendees;
@@ -29,8 +26,6 @@ class AttendeesIndex extends Component{
         })
         .catch((error) => console.log(error))
 
-
-        //api for student // firstname , lastname
         showStudent(user,studentId)
         .then((response) => {
             console.log(response)
@@ -61,11 +56,12 @@ class AttendeesIndex extends Component{
         // console.log(this.props)
         return(
             <div>
-                 <Link to={`/students/${this.props.match.params.id}/attendees/create`}><img src='https://files.slack.com/files-pri/TA2AHQDQ8-FLHR9AC9F/user_4.jpg'  height="80px" width="100px"/></Link>
+                <h3>STUDENT: {this.state.student.firstName} {this.state.student.lastName}</h3>
+                 <Link to={`/cources/${this.props.courcesId}/students/${this.props.match.params.id}/attendees/create`}><img src='https://files.slack.com/files-pri/TA2AHQDQ8-FLHR9AC9F/user_4.jpg'  height="80px" width="100px"/></Link>
                 <table>
                     <thead>
                     <tr>
-                        <th>Student Name</th>
+                        
                         <th>Date</th> 
                         <th>Time</th>
                         <th>Record</th>
@@ -76,7 +72,6 @@ class AttendeesIndex extends Component{
                     <tbody>
                     {this.state.attendees.map((attendees,index) => (
                         <tr key={index}>
-                            <td>{this.state.student.firstName} {this.state.student.lastName}</td>
                             <td>{new Date(attendees.createdAt).getFullYear()}-{new Date(attendees.createdAt).getMonth()}-{new Date(attendees.createdAt).getDay()}</td>
                             <td>{new Date(attendees.createdAt).getHours()}:{new Date(attendees.createdAt).getMinutes()}</td>
                             <td>{attendees.record}</td>

@@ -27,7 +27,7 @@ export const show = (user, attendeestId) => {
 export const create= (user,newAttendees,studentID) => {
     return Axios({
         method:'POST',
-        url:apiUrl + `/students/${studentID}/attendees`,
+        url:apiUrl + `/students/${studentID}/attendees/create`,
         headers:{
             "Authorization":`Bearer ${user.token}`
         },

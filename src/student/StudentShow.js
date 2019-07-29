@@ -28,6 +28,7 @@ class StudentShow extends Component{
                 <h1>{this.state.student.firstName}</h1>
                 <h1>{this.state.student.lastName}</h1>
                 <h1>{this.state.student.email}</h1>
+                <h1>{this.state.student.phone}</h1>
             </div>
         )
     }

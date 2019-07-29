@@ -7,7 +7,8 @@ class StudentEdit extends Component{
         dataForm:{
             firstNamr:" ",
             lastNamr:" ",
-            email:" "
+            email:" ",
+            phone:" "
         }
     }
 
@@ -44,7 +45,7 @@ class StudentEdit extends Component{
         const studentId = this.props.match.params.id;
         const updateStudent = this.state.dataForm;
         update(user,updateStudent,studentId)
-        .then(() => this.props.history.push(`/cources/${this.props.courcesId}/students/`))
+        .then(() => this.props.history.push(`/cources/${this.props.courcesId}/studentInformation/`))
         .catch((error) => console.log(error))
     }
 
@@ -60,6 +61,8 @@ class StudentEdit extends Component{
                     <input  onChange={this.handleChange} type="text" name="lastName" value={this.state.dataForm.lastNamr}/>
                     <label>Email</label>
                     <input onChange={this.handleChange} type="text" name="email" value={this.state.dataForm.email}/>
+                    <label>Phone Number</label>
+                    <input onChange={this.handleChange} type="text" name="phone" value={this.state.dataForm.phone}/>
                     <button type="submit">Update</button>
             </form>
         )
