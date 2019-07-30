@@ -86,7 +86,7 @@ import "./AttendeesRecurd.css";
                   <td>{student.late}</td>
                   <td>{student.lateExcus}</td>
                   <td><button>Send</button></td>
-                  <td>{student.record}</td>
+                  
               </tr>
                 ))}
             </tbody>

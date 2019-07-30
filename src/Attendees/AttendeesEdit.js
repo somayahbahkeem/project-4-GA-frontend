@@ -57,8 +57,9 @@ class AttendeesEdit extends Component{
                     <p>Record:</p>
                     <input  onChange={this.handleChange} type="radio" name="record" value="Present"/>Present <br/>
                     <input  onChange={this.handleChange} type="radio" name="record" value="Absent"/> Absent<br/>
-                    <input  onChange={this.handleChange} type="radio" name="record" value="Late"/>Late<br/> 
-                    {/* <input type="radio" name="gender" value="other"/> Other<br/>  */}
+                    <input  onChange={this.handleChange} type="radio" name="record" value="Absent Excus"/> Absent Excus<br/>
+                    <input  onChange={this.handleChange} type="radio" name="record" value="Late Excus"/>Late<br/> 
+                    <input  onChange={this.handleChange} type="radio" name="record" value="Late"/>Late Excus<br/> 
 
 
                 <button type="submit">Update</button>
