@@ -39,11 +39,6 @@ class StudentIndex extends Component{
                 <thead>
                     <tr>
                         <th>Student Name</th>
-                        <th>Present</th>
-                        <th>Absent</th>
-                        <th>Absent Excuse</th>
-                        <th>Late</th>
-                        <th>Late Excuse</th>
                         <th>Attendees</th>
                     
                     </tr>
@@ -53,16 +48,13 @@ class StudentIndex extends Component{
                         <tr key={index}>
                         
                             <td>{student.firstName} {student.lastName}</td>
-                            <td><input type="radio" onChange={this.onChange} name={`record-${student._id}`} value="Present"/> </td>
-                            <td><input type="radio" onChange={this.onChange} name={`record-${student._id}`} value="Absent"/> </td>
-                            <td><input type="radio" onChange={this.onChange} name={`record-${student._id}`} value="Absent Excuse"/> </td>
-                            <td><input type="radio" onChange={this.onChange} name={`record-${student._id}`} value="Late"/> </td>
-                            <td><input type="radio" onChange={this.onChange} name={`record-${student._id}`} value="Late Excuse"/> </td>
                             <td><Link to={`/cources/${this.props.courcesId}/students/${student._id}/attendees`}><img src='https://files.slack.com/files-pri/TA2AHQDQ8-FLHR9AC9F/user_4.jpg'  height="50px" width="50px"/></Link></td>
                         </tr>
                     ))}
                     </tbody>
                 </table>
+                <br/>
+                
                 <Link to={`/optionPage/${this.props.courcesId}`}><button>Back</button></Link>
                 <button onClick ={this.printFunction}>Print</button>
             </div>

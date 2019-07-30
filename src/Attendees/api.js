@@ -13,6 +13,16 @@ export const index = (user,studentId) => {
     })
 }
 
+export const allAttendances = (user,courceId) => {
+    return  Axios({
+        method:'GET',
+        url: apiUrl + `/cources/${courceId}/students/AttendeesRecurd`,
+        headers:{
+            "Authorization":`Bearer ${user.token}`
+        }
+    })
+}
+
 export const show = (user, attendeestId) => {
     return Axios({
         method:'GET',

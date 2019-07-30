@@ -111,8 +111,8 @@ class App extends Component {
          <AuthenticatedRoute  user={user} path='/cources/:cource_id/students/:student_id/attendees/create' render={(props) => (
             <AttendeesCreate user={user} courceId={props.match.params.cource_id} studentId={props.match.params.student_id}/>
           )}/>
-         <AuthenticatedRoute  user={user} path='/attendees/:id/edit' render={(props) => (
-            <AttendeesEdit user={user}  id={props.match.params.id}/>
+         <AuthenticatedRoute  user={user} path='/cources/:cource_id/students/:student_id/attendees/:id/edit' render={(props) => (
+            <AttendeesEdit user={user}  courceId={props.match.params.cource_id} studentId={props.match.params.student_id} id={props.match.params.id}/>
          
           )}/>
           <AuthenticatedRoute  user={user} path='/students/:id/attendees/show' render={() => (
@@ -143,8 +143,8 @@ class App extends Component {
               <SearchStudent/>
           )}/>
  {/* #AttendeesRecurd Route-------- */}
- <Route  user={user} exact path='/AttendeesRecurd' render={() => (
-              <AttendeesRecurd/>
+ <AuthenticatedRoute user={user} exact path='/cources/:cource_id/students/AttendeesRecurd' render={(props) => (
+              <AttendeesRecurd user={user}  courceId={props.match.params.cource_id}/>
           )}/>                   
 {/* #OptionPage Route-------- */}
           <Route   user={user} exact path='/optionPage/:cource_id' render={(props) => (

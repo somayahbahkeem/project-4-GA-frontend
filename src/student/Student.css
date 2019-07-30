@@ -1,10 +1,13 @@
+.Student{
+  text-align: center;
+}
 .Student table{
-  width:100%;
+  width:50%;
 }
 .Student table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
   }
   .Student th, td {
-    padding: 15px;
+    padding: 10px;
   }

@@ -10,9 +10,8 @@ const OptionPage= (props) => {
         <div className="column">
         <Link to={`/cources/${props.courceId}/students`}>TAKE ATTENDESS</Link>
         </div>
-
         <div className="column">
-        <Link to="/AttendeesRecurd">ATTENDEES RECORD</Link>
+        <Link to={`/cources/${props.courceId}/students/AttendeesRecurd`}>ATTENDEES RECORD</Link>
         </div>
 
         <div className="column">

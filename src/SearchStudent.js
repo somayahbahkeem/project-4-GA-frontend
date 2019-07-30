@@ -11,8 +11,29 @@ const SearchStudent = () => {
            Search For Student: <input type="search" name="q"/>
           <input type="submit"/>
           </form>
-          <br/>   
-          <Link to={`/optionPage/:cource_id`}><button>Back</button></Link>
+          <br/>
+          <table>
+             <thead>
+               <tr>
+                <th>Record</th> 
+                <th>Date</th>
+                <th>time</th>
+                <th>Send</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td><button>Send</button></td>
+              </tr>
+            </tbody>
+          </table>
+          <br/>
+                <Link to={`/optionPage/:cource_id`}><button>Back</button></Link>
+                <button onClick ={this.printFunction}>Print</button>  
+
         </div>
     )
 }

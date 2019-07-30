@@ -39,12 +39,10 @@ class AttendeesEdit extends Component{
         event.preventDefault();
         // console.log(this.props)
         const user = this.props.user;
-        const attendeesId = this.props.id;
+        const attendeesId = this.props.match.params.id;
         const updateAttendees = this.state.dataForm;
         update(user,updateAttendees,attendeesId)
-        .then((res) => {
-            this.props.history.push(`/students/${res.data.studentId}/attendees`)
-        })
+        .then(() =>this.props.history.push(`/cources/${this.props.courceId}/students/${this.props.studentId}/attendees`))
         .catch((error) => console.log(error))
     }
 
@@ -53,9 +51,17 @@ class AttendeesEdit extends Component{
 
         return(
             <form onSubmit={this.handleSubmit}>
-                <label>Record</label>
-                <input  onChange={this.handleChange} type="text" name="record" value={this.state.dataForm.record}/>
-                <button type="submit">Edit</button>
+                {/* <label>Record</label>
+                <input  onChange={this.handleChange} type="text" name="record" value={this.state.dataForm.record}/> */}
+
+                    <p>Record:</p>
+                    <input  onChange={this.handleChange} type="radio" name="record" value="Present"/>Present <br/>
+                    <input  onChange={this.handleChange} type="radio" name="record" value="Absent"/> Absent<br/>
+                    <input  onChange={this.handleChange} type="radio" name="record" value="Late"/>Late<br/> 
+                    {/* <input type="radio" name="gender" value="other"/> Other<br/>  */}
+
+
+                <button type="submit">Update</button>
             </form>
         )
     }

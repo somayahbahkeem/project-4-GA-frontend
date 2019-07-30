@@ -1,0 +1,11 @@
+.Attendees table{
+width:100%;
+}
+.Attendees table, th, td {
+border: 1px solid black;
+border-collapse: collapse;
+}
+.Attendees th, td {
+padding: 15px;
+}
+  

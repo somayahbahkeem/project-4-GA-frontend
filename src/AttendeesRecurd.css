@@ -1,0 +1,10 @@
+.AttendeesRecurd  table{
+width:100%;
+}
+.AttendeesRecurd table, th, td {
+border: 1px solid black;
+border-collapse: collapse;
+}
+.AttendeesRecurd  th, td {
+padding: 15px;
+}

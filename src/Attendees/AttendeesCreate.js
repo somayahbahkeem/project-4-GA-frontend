@@ -23,6 +23,7 @@ class AttendeesCreate extends Component{
 
     
         handleSubmit = (event) => {
+            console.log(this.state.dataForm.record)
             event.preventDefault();
             const newAttendees = this.state.dataForm
             const user = this.props.user
@@ -37,8 +38,16 @@ class AttendeesCreate extends Component{
     render(){
         return(
             <form onSubmit={this.handleSubmit}>
-                <label>Record</label>
-                <input  onChange={this.handleChange} type="text" name="record" value={this.state.dataForm.record}/>
+                {/* <label>Record</label>
+                <input  onChange={this.handleChange} type="text" name="record" value={this.state.dataForm.record}/> */}
+
+                    <p>Record:</p>
+                    <input  onChange={this.handleChange} type="radio" name="record" value="Present"/>Present <br/>
+                    <input  onChange={this.handleChange} type="radio" name="record" value="Absent"/> Absent<br/>
+                    <input  onChange={this.handleChange} type="radio" name="record" value="Late"/>Late<br/> 
+                    {/* <input type="radio" name="gender" value="other"/> Other<br/>  */}
+
+
                 <button type="submit">Create</button>
             </form>
         )
