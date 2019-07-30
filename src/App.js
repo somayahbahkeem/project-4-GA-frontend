@@ -14,6 +14,7 @@ import StudentShow from './student/StudentShow'
 import StudentCreate from './student/StudentCreate'
 import StudentEdit from './student/StudentEdit'
 import Home from './Home';
+import StudentPage from './StudentPage'
 import Company from './Company'
 import About from './About';
 import Contact from './Contact';
@@ -121,6 +122,10 @@ class App extends Component {
 {/* #Home Route-------- */}
           <Route   user={user} exact path='/' render={() => (
           <Home user={user}/>
+          )}/>
+{/* #StudentPage Route-------- */}
+          <AuthenticatedRoute   user={user} exact path='/studentPage' render={() => (
+          <StudentPage user={user}/>
           )}/>
 {/* #Company Route-------- */}
           <AuthenticatedRoute  user={user} exact path='/company' render={() => (
