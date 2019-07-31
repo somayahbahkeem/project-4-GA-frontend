@@ -58,6 +58,7 @@ class AttendeesIndex extends Component{
             <div className="Attendees">
                 <h3>STUDENT: {this.state.student.firstName} {this.state.student.lastName}</h3>
                  <Link to={`/cources/${this.props.courcesId}/students/${this.props.match.params.id}/attendees/create`}><img src='https://files.slack.com/files-pri/TA2AHQDQ8-FLHR9AC9F/user_4.jpg'  height="80px" width="100px"/></Link>
+
                 <table>
                     <thead>
                     <tr>

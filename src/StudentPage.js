@@ -68,13 +68,19 @@ import "./StudentPage.css";
               <tbody>
                  {this.state.students.map((student,index) => (
                 <tr key={index}>
-                    <td>{student.firstName} {student.lastName}</td>
-                    <td>{student.present}</td>
-                    <td>{student.absent}</td>
-                    <td>{student.absentExcus}</td>
-                    <td>{student.late}</td>
-                    <td>{student.lateExcus}</td>   
-                </tr>
+                  <td>{student.firstName} {student.lastName}</td> 
+                  <td>{student.present}</td> 
+                  {/* <td>{student.absent}</td> */}
+                  {student.absent >= 3 ? <td style={{color: 'red', backgroundColor: 'yellow'}}>{student.absent}</td>  : <td>{student.absent}</td>  }
+                  {/* <td>{student.absentExcus}</td> */}
+                  {student.absentExcus >= 3 ? <td style={{color: 'red', backgroundColor: 'yellow'}}>{student.absentExcus}</td>  : <td>{student.absentExcus}</td>  }
+                  {/* <td>{student.late}</td> */}
+                  {student.late >= 3 ? <td style={{color: 'red', backgroundColor: 'yellow'}}>{student.late}</td>  : <td>{student.late}</td>  }
+                  {/* <td>{student.lateExcus}</td> */}
+                  {student.lateExcus >= 3 ? <td style={{color: 'red', backgroundColor: 'yellow'}}>{student.lateExcus}</td>  : <td>{student.lateExcus}</td>  }
+                  <td><button onClick={()=> this.sendEmail(student._id)}>Send</button></td>
+                  
+              </tr>
                   ))}
               </tbody>
             </table>
