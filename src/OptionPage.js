@@ -21,13 +21,10 @@ const OptionPage= (props) => {
         <div className="column">
         <Link to={`/cources/${props.courceId}/studentInformation`}>STUDENTS INFORMATION</Link>
         </div>
-        
         </div>
-
         <section className="S">
         <Link to={`/cources`}>Back</Link>
         </section>
-        
         </div>
 
 
