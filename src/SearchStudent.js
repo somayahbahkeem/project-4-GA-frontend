@@ -33,7 +33,7 @@ onSubmit = (e)=> {
   let email = this.state.email
   studentSearch(email)
   .then(response => {
-     const student = response.data.student || this.state.student;
+     const student = response.data.student;
      console.log(response)
      this.setState({
          student:student

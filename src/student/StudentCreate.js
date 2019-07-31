@@ -5,10 +5,10 @@ import {withRouter} from 'react-router-dom'
 class StudentCreate extends Component{
     state = {
         dataForm:{
-            firstName:" ",
-            lastName:" ",
-            email:" ",
-            phone:" "
+            firstName:"",
+            lastName:"",
+            email:"",
+            phone:""
         }
     }
 
