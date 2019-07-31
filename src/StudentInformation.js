@@ -78,7 +78,7 @@ class StudentInformation extends Component{
             </tbody>
         
     </table>
-       <Link to={`/optionPage/${this.props.courceId}`}><button>Back</button></Link> 
+       <Link to={`/optionPage/${this.props.courcesId}`}><button>Back</button></Link>
        <button onClick ={this.printFunction}>Print</button>
 
         </div>
