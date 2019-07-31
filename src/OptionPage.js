@@ -15,7 +15,7 @@ const OptionPage= (props) => {
         </div>
 
         <div className="column">
-        <Link to="/SearchStudent">SEARCH FOR STUDENT</Link>
+        <Link to={`/cources/${props.courceId}/SearchStudent`}>SEARCH FOR STUDENT</Link>
         </div>
 
         <div className="column">

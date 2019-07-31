@@ -13,6 +13,13 @@ export const index = (user) => {
     })
 }
 
+export const courcesList = () => {
+    return  Axios({
+        method:'GET',
+        url: apiUrl + '/courcesList',
+    })
+}
+
 export const show = (user, courcesId) => {
     return Axios({
         method:'GET',

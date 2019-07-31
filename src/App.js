@@ -15,6 +15,7 @@ import StudentCreate from './student/StudentCreate'
 import StudentEdit from './student/StudentEdit'
 import Home from './Home';
 import StudentPage from './StudentPage'
+import CourcesList from './CourcesList'
 import Company from './Company'
 import About from './About';
 import Contact from './Contact';
@@ -123,9 +124,13 @@ class App extends Component {
           <Route   user={user} exact path='/' render={() => (
           <Home user={user}/>
           )}/>
+{/* #CourcesList Route-------- */}
+          <Route    exact path='/courcesList' render={() => (
+            <CourcesList/>
+          )}/>
 {/* #StudentPage Route-------- */}
-          <AuthenticatedRoute   user={user} exact path='/studentPage' render={() => (
-          <StudentPage user={user}/>
+          <Route exact path='/cources/:cource_id/students/studentPage' render={(props) => (
+            <StudentPage courceId={props.match.params.cource_id} />
           )}/>
 {/* #Company Route-------- */}
           <AuthenticatedRoute  user={user} exact path='/company' render={() => (
@@ -144,12 +149,12 @@ class App extends Component {
               <StudentInformation alert={this.alert} user={user} courceId={props.match.params.cource_id} studentId={props.match.params.student_id}/>
           )}/>
 {/* #SearchStudent Route-------- */}
-          <Route  user={user} exact path='/SearchStudent' render={() => (
-              <SearchStudent/>
+          < AuthenticatedRoute user={user} exact path='/cources/:cource_id/SearchStudent' render={(props) => (
+              <SearchStudent alert={this.alert} courceId={props.match.params.cource_id}/>
           )}/>
  {/* #AttendeesRecurd Route-------- */}
- <AuthenticatedRoute user={user} exact path='/cources/:cource_id/students/AttendeesRecurd' render={(props) => (
-              <AttendeesRecurd user={user}  courceId={props.match.params.cource_id}/>
+          <AuthenticatedRoute user={user} exact path='/cources/:cource_id/students/AttendeesRecurd' render={(props) => (
+              <AttendeesRecurd user={user} alert={this.alert} courceId={props.match.params.cource_id}/>
           )}/>                   
 {/* #OptionPage Route-------- */}
           <Route   user={user} exact path='/optionPage/:cource_id' render={(props) => (

@@ -65,31 +65,3 @@ class StudentIndex extends Component{
 
 
 export default StudentIndex
-
-
-
-{/* <table >
-<thead>
-    <tr>
-        <th>Firstname</th>
-        <th>Lastname</th> 
-        <th>Email</th>
-        <th>Delete</th>
-        <th>Edit</th>
-        <th>Attendees</th>
-    
-    </tr>
-    </thead>
-    <tbody>
-    {this.state.students.map((student,index) => (
-        <tr key={index}>
-            <td>{student.firstName}</td>
-            <td>{student.lastName}</td>
-            <td>{student.email}</td>
-            <td><button onClick={() => this.destroy(student._id)}>Delete</button></td>
-            <td><Link to={`/cources/${this.props.courcesId}/students/${student._id}/edit`}><button>Edit</button></Link></td>
-            <td><Link to={`/cources/${this.props.courcesId}/students/${student._id}/attendees`}><img src='https://files.slack.com/files-pri/TA2AHQDQ8-FLHR9AC9F/user_4.jpg'  height="50px" width="50px"/></Link></td>
-        </tr>
-    ))}
-    </tbody>
-</table> */}

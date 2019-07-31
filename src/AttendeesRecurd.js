@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {index,showStudent, allAttendances} from './Attendees/api'
+import {allAttendances,email} from './Attendees/api'
 import {Link} from 'react-router-dom';
 import "./AttendeesRecurd.css";
 
@@ -13,11 +13,19 @@ import "./AttendeesRecurd.css";
       window.print();
     }
 
-
+    sendEmail = (studentId) =>{
+      email(studentId)
+      .then((response) => {
+        this.props.alert("Email sent!", "success")
+      })
+      .catch((error) => {
+        this.props.alert("Email Failed!", "failure")
+      })
+    }
   componentDidMount(){
       const user = this.props.user
       // const studentId = this.props.studentId
-      allAttendances(user, this.props.courceId)
+      allAttendances(this.props.courceId)
       .then(response => {
          let allStudents = response.data.students;
          console.log(allStudents)
@@ -30,6 +38,9 @@ import "./AttendeesRecurd.css";
            student.attendees.forEach(attendance => {
             if (attendance.record === "Present") {
               student.present++
+              // if(present>=3){
+              //   present
+              // }
             } else if (attendance.record === "Absent"){
               student.absent++
             } else if (attendance.record === "Absent Excus"){
@@ -48,21 +59,12 @@ import "./AttendeesRecurd.css";
       })
       .catch((error) => console.log(error))
 
-      // showStudent(user,studentId)
-      // .then((response) => {
-      //     console.log(response)
-      //     this.setState({
-      //         student:response.data.student 
-      //     })
-      // })
-      .catch(error => console.log(error))
-
   }
 
   render(){
     return(
         <div className="AttendeesRecurd">
-          <h6>Attendees Recurd</h6>    
+          <br/>   
             <table>
              <thead>
                <tr>
@@ -79,13 +81,17 @@ import "./AttendeesRecurd.css";
             <tbody>
                {this.state.students.map((student,index) => (
               <tr key={index}>
-                  <td>{student.firstName} {student.lastName}</td>
-                  <td>{student.present}</td>
-                  <td>{student.absent}</td>
-                  <td>{student.absentExcus}</td>
-                  <td>{student.late}</td>
-                  <td>{student.lateExcus}</td>
-                  <td><button>Send</button></td>
+                  <td>{student.firstName} {student.lastName}</td> 
+                  <td>{student.present}</td> 
+                  {/* <td>{student.absent}</td> */}
+                  {student.absent >= 3 ? <td style={{color: 'red', backgroundColor: 'yellow'}}>{student.absent}</td>  : <td>{student.absent}</td>  }
+                  {/* <td>{student.absentExcus}</td> */}
+                  {student.absentExcus >= 3 ? <td style={{color: 'red', backgroundColor: 'yellow'}}>{student.absentExcus}</td>  : <td>{student.absentExcus}</td>  }
+                  {/* <td>{student.late}</td> */}
+                  {student.late >= 3 ? <td style={{color: 'red', backgroundColor: 'yellow'}}>{student.late}</td>  : <td>{student.late}</td>  }
+                  {/* <td>{student.lateExcus}</td> */}
+                  {student.lateExcus >= 3 ? <td style={{color: 'red', backgroundColor: 'yellow'}}>{student.lateExcus}</td>  : <td>{student.lateExcus}</td>  }
+                  <td><button onClick={()=> this.sendEmail(student._id)}>Send</button></td>
                   
               </tr>
                 ))}

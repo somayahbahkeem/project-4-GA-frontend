@@ -2,7 +2,6 @@
 import apiUrl from '../apiConfig';
 import Axios from 'axios'
 
-
 export const index = (user,courcesId) => {
     return  Axios({
         method:'GET',
@@ -59,5 +58,11 @@ export const update = (user,updateStudent,studentId) => {
         data:{
             student:updateStudent
         }
+    })
+}
+export const studentSearch = (email) => {
+    return  Axios({
+        method:'GET',
+        url: apiUrl + '/students/search/' + email,
     })
 }
